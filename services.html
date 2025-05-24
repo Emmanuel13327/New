@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Converta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #f5f7fa, #e0e7ff);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            padding: 1rem 2rem;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .service-hero {
+            background: linear-gradient(135deg, #4339f2, #fd5ec2);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .service-card {
+            border: none;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #4339f2;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: #f8f9ff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #4339f2;
+            border-color: #4339f2;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 57, 242, 0.3);
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #4339f2;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #4339f2;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Converta</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="support.html">Support</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Service Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <h1 class="display-4 mb-4" data-aos="fade-up">Our Services</h1>
+            <p class="lead" data-aos="fade-up" data-aos-delay="200">Discover how we can help transform your business</p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="service-card">
+                        <div class="service-icon">🚀</div>
+                        <h3 class="service-title">Digital Marketing</h3>
+                        <p class="service-description">Comprehensive digital marketing solutions to boost your online presence and drive growth.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">💡</div>
+                        <h3 class="service-title">Web Development</h3>
+                        <p class="service-description">Custom website development with modern technologies and responsive design.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3 class="service-title">Mobile Apps</h3>
+                        <p class="service-description">Native and cross-platform mobile applications for iOS and Android.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="mb-4" data-aos="fade-up">Ready to Get Started?</h2>
+            <p class="mb-4" data-aos="fade-up" data-aos-delay="200">Let's discuss how we can help your business grow</p>
+            <a href="support.html" class="btn btn-primary" data-aos="fade-up" data-aos-delay="400">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-dark-purple py-5 mt-auto">
+        <div class="container">
+            <div class="row">
+                <!-- Logo & Tagline -->
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <svg class="me-2" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"></path>
+                            <path d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <span class="text-white fs-4 fw-bold">Converta</span>
+                    </div>
+                    <p class="text-muted">Creative-powered to fuel your growth goals. We build world-class digital products, software and branding.</p>
+                </div>
+
+                <!-- Navigation Columns -->
+                <div class="col-md-8">
+                    <div class="row">
+                        <!-- Products -->
+                        <div class="col-md-4">
+                            <h5 class="text-white mb-4">Products</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-light">Unify App</a></li>
+                                <li><a href="#" class="text-light">Page Builder</a></li>
+                                <li><a href="#" class="text-light">Templates</a></li>
+                                <li><a href="#" class="text-light">Pricing</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Resources -->
+                        <div class="col-md-4">
+                            <h5 class="text-white mb-4">Resources</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-light">Design</a></li>
+                                <li><a href="#" class="text-light">Inspiration</a></li>
+                                <li><a href="#" class="text-light">Blog</a></li>
+                                <li><a href="#" class="text-light">Jobs</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Support -->
+                        <div class="col-md-4">
+                            <h5 class="text-white mb-4">Support</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-light">Documentation</a></li>
+                                <li><a href="#" class="text-light">Help Desk</a></li>
+                                <li><a href="#" class="text-light">Video Guides</a></li>
+                                <li><a href="#" class="text-light">Security</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <hr class="border-gray-700 my-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-center text-muted small"> 2025 Converta Theme. Codeless, LLC. San Francisco, California. USA.</p>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end">
+                    <a href="#" class="me-3"><i class="fab fa-facebook-f text-light fs-5"></i></a>
+                    <a href="#" class="me-3"><i class="fab fa-twitter text-light fs-5"></i></a>
+                    <a href="#" class="me-3"><i class="fab fa-youtube text-light fs-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html> 
