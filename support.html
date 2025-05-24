@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Converta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(120deg, #f5f7fa 0%, #e0e7ff 100%);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            padding: 1rem 2rem;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .support-hero {
+            background: linear-gradient(135deg, #4339f2, #fd5ec2);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 0.75rem;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: #4339f2;
+            box-shadow: 0 0 0 0.2rem rgba(67, 57, 242, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #4339f2;
+            border-color: #4339f2;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 57, 242, 0.3);
+        }
+
+        .faq-section {
+            padding: 4rem 0;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f8f9ff;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: #666;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .faq-item.active .faq-question {
+            color: #4339f2;
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #4339f2;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #4339f2;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* Card Hover Effects */
+        .shadow, .shadow-sm, .rounded-4, .card, .profile-card, .list-group-item, .bg-white {
+            transition: box-shadow 0.3s cubic-bezier(.4,2,.3,1), transform 0.3s cubic-bezier(.4,2,.3,1);
+        }
+        .card:hover, .bg-white.shadow:hover, .rounded-4.shadow:hover, .profile-card:hover {
+            box-shadow: 0 12px 32px 0 rgba(67,57,242,0.18), 0 2px 8px 0 rgba(67,57,242,0.10);
+            transform: translateY(-8px) scale(1.035);
+        }
+        /* Icon Hover Animation */
+        .card .mb-4 svg, .bg-white .mb-4 svg {
+            transition: transform 0.4s cubic-bezier(.4,2,.3,1), filter 0.3s;
+        }
+        .card:hover .mb-4 svg, .bg-white.shadow:hover .mb-4 svg {
+            transform: scale(1.18) rotate(-6deg);
+            filter: drop-shadow(0 2px 8px #4f6ef7aa);
+        }
+        /* FAQ Tab Animation */
+        .list-group-item {
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+        .list-group-item.active {
+            background: linear-gradient(90deg, #4339f2 60%, #fd5ec2 100%);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(67,57,242,0.10);
+        }
+        .list-group-item:hover:not(.active) {
+            background: #f0f4ff;
+            color: #4339f2;
+        }
+        /* Testimonials Animation */
+        .bg-white.rounded-4.shadow-sm.p-4.h-100 {
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .bg-white.rounded-4.shadow-sm.p-4.h-100:hover {
+            box-shadow: 0 12px 32px 0 rgba(67,57,242,0.13), 0 2px 8px 0 rgba(67,57,242,0.08);
+            transform: translateY(-6px) scale(1.025);
+        }
+        /* Trusted Logos Animation */
+        .trusted-logos img {
+            transition: transform 0.3s, filter 0.3s;
+            filter: grayscale(0.3) brightness(0.95);
+        }
+        .trusted-logos img:hover {
+            transform: scale(1.12) rotate(-3deg);
+            filter: grayscale(0) brightness(1.1) drop-shadow(0 2px 8px #4339f2aa);
+        }
+        /* Section Animation Utility */
+        [data-aos] {
+            will-change: opacity, transform;
+        }
+        /* Smoother FAQ tab content */
+        .tab-pane {
+            transition: opacity 0.5s cubic-bezier(.4,2,.3,1), transform 0.5s cubic-bezier(.4,2,.3,1);
+        }
+        .tab-pane:not(.show) {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+        .tab-pane.show {
+            opacity: 1;
+            transform: none;
+        }
+        /* Button Glow on Hover */
+        .btn-primary:hover, .btn-outline-light:hover, .btn-outline-dark:hover {
+            box-shadow: 0 0 0 0.2rem #4339f2aa, 0 8px 24px #4339f233;
+            filter: brightness(1.08);
+        }
+        /* Section fade-in */
+        section {
+            position: relative;
+            z-index: 1;
+        }
+        /* Responsive tweaks */
+        @media (max-width: 1200px) {
+            .container, .container-lg, .container-md, .container-sm, .container-xl {
+                max-width: 98vw;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        @media (max-width: 992px) {
+            .row.align-items-center {
+                flex-direction: column !important;
+                text-align: center;
+            }
+            .col-lg-6, .col-md-6 {
+                max-width: 100%;
+                flex: 0 0 100%;
+            }
+            .team-member-left, .team-member-right {
+                position: static !important;
+                margin: 1.5rem auto 0;
+                display: block;
+            }
+            .team-diagram {
+                margin-bottom: 2rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .py-5, .my-5, .section, section {
+                padding: 2rem 0 !important;
+                margin: 0 !important;
+            }
+            .rounded-4, .card, .profile-card {
+                border-radius: 12px !important;
+            }
+            .p-5, .card-body.p-4 {
+                padding: 1.25rem !important;
+            }
+            .display-4, .display-5, h1, h2 {
+                font-size: 2rem !important;
+            }
+            .lead, .fs-5, p, .fw-bold {
+                font-size: 1rem !important;
+            }
+            .btn-lg, .btn {
+                font-size: 1rem !important;
+                padding: 0.75rem 1.25rem !important;
+            }
+            .faq-question {
+                padding: 1rem !important;
+                font-size: 1rem !important;
+            }
+            .faq-answer {
+                padding: 0 1rem 1rem !important;
+            }
+            .trusted-logos img {
+                height: 28px !important;
+                margin: 0.5rem 0;
+            }
+        }
+        @media (max-width: 576px) {
+            .container, .container-lg, .container-md, .container-sm, .container-xl {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            .row.g-4, .row {
+                gap: 1rem !important;
+            }
+            .p-5, .card-body.p-4 {
+                padding: 0.75rem !important;
+            }
+            .display-4, .display-5, h1, h2 {
+                font-size: 1.3rem !important;
+            }
+            .btn-lg, .btn {
+                font-size: 0.95rem !important;
+                padding: 0.6rem 1rem !important;
+            }
+            .faq-question {
+                font-size: 0.95rem !important;
+            }
+            .faq-answer {
+                font-size: 0.95rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Converta</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="support.html">Support</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Team Hero Section -->
+    <section class="py-5 my-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Left: Team Members -->
+                <div class="col-lg-6 position-relative" data-aos="fade-right">
+                    <div class="team-diagram position-relative">
+                        <!-- Background elements -->
+                        <svg class="team-bg-element position-absolute" style="top: -20px; left: -20px; z-index: 0;" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#e0e7ff" stroke-width="1">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/>
+                        </svg>
+                        <svg class="team-bg-element position-absolute" style="bottom: 40px; right: 10px; z-index: 0;" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#e0e7ff" stroke-width="1">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <line x1="12" y1="2" x2="12" y2="22"></line>
+                        </svg>
+                        
+                        <!-- Center Profile -->
+                        <div class="team-member-center position-relative mx-auto mb-3">
+                            <div class="profile-card text-center position-relative" style="max-width: 180px; margin: 0 auto;">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="img-fluid rounded-circle border border-3 border-white shadow-sm" alt="Tina" style="width: 150px; height: 150px; object-fit: cover;">
+                                <div class="name-badge py-1 px-3 bg-primary text-white rounded-pill shadow-sm position-relative" style="width: fit-content; margin: -15px auto 0;">
+                                    Tina
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Left Profile -->
+                        <div class="team-member-left position-absolute" style="left: 0; top: 50%;">
+                            <div class="profile-card text-center">
+                                <img src="https://randomuser.me/api/portraits/women/66.jpg" class="img-fluid rounded-circle border border-3 border-white shadow-sm" alt="Rose" style="width: 130px; height: 130px; object-fit: cover;">
+                                <div class="name-badge py-1 px-3 bg-warning text-dark rounded-pill shadow-sm position-relative" style="width: fit-content; margin: -15px auto 0;">
+                                    Rose
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Profile -->
+                        <div class="team-member-right position-absolute" style="right: 0; top: 50%;">
+                            <div class="profile-card text-center">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="img-fluid rounded-circle border border-3 border-white shadow-sm" alt="Scott" style="width: 130px; height: 130px; object-fit: cover;">
+                                <div class="name-badge py-1 px-3 bg-success text-white rounded-pill shadow-sm position-relative" style="width: fit-content; margin: -15px auto 0;">
+                                    Scott
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Connection lines using SVG -->
+                        <svg class="position-absolute" style="top: 0; left: 0; width: 100%; height: 100%; z-index: -1;" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M200,100 L100,150" stroke="#ffc107" stroke-width="2" stroke-dasharray="5,5" />
+                            <path d="M200,100 L300,150" stroke="#28a745" stroke-width="2" stroke-dasharray="5,5" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Right: Content -->
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h2 class="display-5 fw-bold text-primary mb-4">Growth strategies to be effective & competitive</h2>
+                    <p class="lead text-muted mb-4">
+                        Everything we do and dream up has a solid design impact. We create human-centered enterprise software that has the polished, snappy feel of the best consumer apps.
+                    </p>
+                    <a href="#contactForm" class="btn btn-primary btn-lg px-4 py-2">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (Second Hero Section) -->
+    <section class="py-5" style="background: #f7f9fb;">
+      <div class="container">
+        <h1 class="display-4 fw-bold text-center mb-5" style="color: #253858;">Have some questions?</h1>
+        <div class="row align-items-center justify-content-center">
+          <!-- Map Column -->
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <div style="border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(67,57,242,0.10);">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19800.000000000004!2d-0.1277583!3d51.5073509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b3333333333%3A0x1234567890abcdef!2sLondon!5e0!3m2!1sen!2suk!4v1680000000000!5m2!1sen!2suk"
+                width="100%" height="350" style="border:0; filter: grayscale(1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+          <!-- Form Column -->
+          <div class="col-lg-6">
+            <div style="background: #fff; border-radius: 24px; box-shadow: 0 8px 32px rgba(67,57,242,0.10); padding: 2.5rem 2rem;">
+              <form>
+                <div class="mb-4">
+                  <input type="text" class="form-control form-control-lg" placeholder="Your Name" required style="background: #f7f9fb; border-radius: 12px; border: none;">
+                </div>
+                <div class="mb-4">
+                  <input type="email" class="form-control form-control-lg" placeholder="Your Email" required style="background: #f7f9fb; border-radius: 12px; border: none;">
+                </div>
+                <div class="mb-4">
+                  <textarea class="form-control form-control-lg" rows="5" placeholder="Your Message" required style="background: #f7f9fb; border-radius: 12px; border: none;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100" style="border-radius: 12px; background: #3a6cf6; border: none;">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Info Cards Section -->
+    <section class="py-5 bg-white" data-aos="fade-up">
+      <div class="container">
+        <div class="row g-4 justify-content-center">
+          <!-- Address Card -->
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="bg-white shadow rounded-4 p-5 text-center h-100 d-flex flex-column align-items-center justify-content-center">
+              <div class="mb-4">
+                <svg width="64" height="64" fill="none" stroke="#4f6ef7" stroke-width="2.5" viewBox="0 0 48 48">
+                  <circle cx="24" cy="24" r="20" fill="#e7edfe"/>
+                  <path d="M24 14a7 7 0 0 1 7 7c0 5-7 13-7 13s-7-8-7-13a7 7 0 0 1 7-7z"/>
+                  <circle cx="24" cy="21" r="2.5" fill="#fff"/>
+                </svg>
+              </div>
+              <div>
+                <p class="mb-0 fw-semibold fs-5">Arcus Park, Str. 231–233, 04347<br>Leipzig, Germany.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Phone Card -->
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="bg-white shadow rounded-4 p-5 text-center h-100 d-flex flex-column align-items-center justify-content-center">
+              <div class="mb-4">
+                <svg width="64" height="64" fill="none" stroke="#4f6ef7" stroke-width="2.5" viewBox="0 0 48 48">
+                  <circle cx="24" cy="24" r="20" fill="#e7edfe"/>
+                  <path d="M32 30.5c-2.5 1.5-5.5 1.5-8 0-2.5-1.5-4.5-4.5-4.5-7s2-5.5 4.5-7c2.5-1.5 5.5-1.5 8 0"/>
+                  <path d="M28 20a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" fill="#fff"/>
+                </svg>
+              </div>
+              <div>
+                <p class="mb-0 fw-semibold fs-5">+49 340 90020<br>+49 340 90040</p>
+              </div>
+            </div>
+          </div>
+          <!-- Email Card -->
+          <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="bg-white shadow rounded-4 p-5 text-center h-100 d-flex flex-column align-items-center justify-content-center">
+              <div class="mb-4">
+                <svg width="64" height="64" fill="none" stroke="#4f6ef7" stroke-width="2.5" viewBox="0 0 48 48">
+                  <circle cx="24" cy="24" r="20" fill="#e7edfe"/>
+                  <rect x="14" y="18" width="20" height="12" rx="3" fill="#fff"/>
+                  <path d="M14 18l10 8 10-8"/>
+                </svg>
+              </div>
+              <div>
+                <p class="mb-0 fw-semibold fs-5">info@codeless.co<br>support@convertatheme.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Feature Cards Section -->
+    <section class="py-5 bg-light" data-aos="fade-up">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-down">
+          <h2 class="fw-bold display-5" style="color: #253858;">A proficient software development boutique<br>focuses on cutting-edge technologies</h2>
+        </div>
+        <div class="row g-4">
+          <!-- Card 1 -->
+          <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="100">
+            <div class="card border-0 bg-primary bg-opacity-90 text-white h-100 rounded-4 shadow-sm">
+              <div class="card-body p-4">
+                <div class="mb-4">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <rect x="8" y="8" width="32" height="32" rx="8" fill="#6fa8fe"/>
+                    <circle cx="32" cy="16" r="4" fill="#fff"/>
+                    <rect x="14" y="14" width="12" height="12" rx="4" fill="#b3d1ff"/>
+                  </svg>
+                </div>
+                <h4 class="fw-bold mb-3">Technology Services</h4>
+                <p>If you're looking for a dedicated partner to entrust your software & app development someone reliable and skilled enough to accompany you through your technical blockage, we are the one.</p>
+                <a href="#" class="btn btn-outline-light mt-3">Learn More</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="200">
+            <div class="card border-0 bg-primary bg-opacity-75 text-white h-100 rounded-4 shadow-sm">
+              <div class="card-body p-4">
+                <div class="mb-4">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <rect x="8" y="8" width="32" height="32" rx="8" fill="#a5b4fc"/>
+                    <circle cx="16" cy="32" r="4" fill="#fff"/>
+                    <rect x="22" y="14" width="12" height="12" rx="4" fill="#e0e7ff"/>
+                  </svg>
+                </div>
+                <h4 class="fw-bold mb-3">Offshore Development</h4>
+                <p>If you're looking for a dedicated partner to entrust your software & app development someone reliable and skilled enough to accompany you through your technical blockage, we are the one.</p>
+                <a href="#" class="btn btn-outline-light mt-3">Learn More</a>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="300">
+            <div class="card border-0 bg-warning bg-opacity-90 text-dark h-100 rounded-4 shadow-sm">
+              <div class="card-body p-4">
+                <div class="mb-4">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <rect x="8" y="8" width="32" height="32" rx="8" fill="#fdba74"/>
+                    <circle cx="32" cy="16" r="4" fill="#fff"/>
+                    <rect x="14" y="22" width="12" height="12" rx="4" fill="#fff3cd"/>
+                  </svg>
+                </div>
+                <h4 class="fw-bold mb-3">Mobile App Development</h4>
+                <p>If you're looking for a dedicated partner to entrust your software & app development someone reliable and skilled enough to accompany you through your technical blockage, we are the one.</p>
+                <a href="#" class="btn btn-outline-dark mt-3">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Tabbed Section -->
+    <section class="py-5 bg-white" data-aos="fade-up">
+      <div class="container">
+        <div class="row g-0">
+          <!-- Tabs -->
+          <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-right" data-aos-delay="100">
+            <div class="list-group list-group-flush shadow-sm rounded-4 overflow-hidden">
+              <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#faq-general">General</a>
+              <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#faq-account">Account</a>
+              <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#faq-pricing">Pricing and Support</a>
+              <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#faq-purchasing">Purchasing Online</a>
+              <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#faq-returns">Returns Policy</a>
+              <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#faq-technical">Technical Methods</a>
+            </div>
+          </div>
+          <!-- Tab Content -->
+          <div class="col-md-8 ps-md-5" data-aos="fade-left" data-aos-delay="200">
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="faq-general">
+                <h5 class="fw-bold mb-3">How can I be sure you work at my project as much as you declare?</h5>
+                <p class="text-muted mb-4">Well, the most important thing to know is what you want to accomplish. Why do I need this software? What for? What should it do? Having a clear vision in mind is crucial when ordering a software application. You don't want to spend many months developing it with us without being sure what you need.</p>
+                <h5 class="fw-bold mb-3">What do I need to know before contacting you?</h5>
+                <p class="text-muted mb-4">Have a clear idea of your project goals, timeline, and budget. The more details you provide, the better we can assist you.</p>
+                <h5 class="fw-bold mb-3">How much time will it take for you to make my app?</h5>
+                <p class="text-muted mb-4">Project timelines vary based on complexity and requirements. We'll provide an estimate after our initial discussion.</p>
+                <h5 class="fw-bold mb-3">How do you guarantee product quality?</h5>
+                <p class="text-muted mb-4">We follow industry best practices, rigorous testing, and continuous feedback to ensure high-quality deliverables.</p>
+              </div>
+              <div class="tab-pane fade" id="faq-account">
+                <h5 class="fw-bold mb-3">How do I create an account?</h5>
+                <p class="text-muted mb-4">Click the Sign Up button on the top right and fill in your details. You'll receive a confirmation email to activate your account.</p>
+                <h5 class="fw-bold mb-3">Can I change my email address?</h5>
+                <p class="text-muted mb-4">Yes, go to your account settings and update your email address. You'll need to verify the new email.</p>
+              </div>
+              <div class="tab-pane fade" id="faq-pricing">
+                <h5 class="fw-bold mb-3">What payment methods do you accept?</h5>
+                <p class="text-muted mb-4">We accept all major credit cards, PayPal, and bank transfers.</p>
+                <h5 class="fw-bold mb-3">Is there a free trial available?</h5>
+                <p class="text-muted mb-4">Yes, we offer a 14-day free trial for all new users.</p>
+              </div>
+              <div class="tab-pane fade" id="faq-purchasing">
+                <h5 class="fw-bold mb-3">How do I purchase your software?</h5>
+                <p class="text-muted mb-4">Visit our pricing page, select a plan, and follow the checkout process.</p>
+              </div>
+              <div class="tab-pane fade" id="faq-returns">
+                <h5 class="fw-bold mb-3">What is your returns policy?</h5>
+                <p class="text-muted mb-4">If you're not satisfied, contact us within 30 days for a full refund.</p>
+              </div>
+              <div class="tab-pane fade" id="faq-technical">
+                <h5 class="fw-bold mb-3">What technical methods do you use?</h5>
+                <p class="text-muted mb-4">We use agile methodologies, continuous integration, and the latest technologies to deliver robust solutions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold display-5" style="color: #253858;">What our clients are saying about us</h2>
+          <p class="text-muted fs-5">We pride ourselves on providing an exceptional service to our clients</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+          <!-- Testimonial 1 -->
+          <div class="col-md-4">
+            <div class="bg-white rounded-4 shadow-sm p-4 h-100">
+              <div class="mb-3">
+                <span class="fs-2 text-primary">&ldquo;</span>
+              </div>
+              <p class="mb-4">"Outstanding dedication to excellence, exceptional support received. Impressive service!"</p>
+              <div class="d-flex align-items-center mt-auto">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ernest Smith" class="rounded-circle me-3" width="48" height="48">
+                <div>
+                  <div class="fw-bold">Ernest Smith</div>
+                  <div class="text-muted small">Developer at Unixity</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 2 -->
+          <div class="col-md-4">
+            <div class="bg-white rounded-4 shadow-sm p-4 h-100">
+              <div class="mb-3">
+                <span class="fs-2 text-primary">&ldquo;</span>
+              </div>
+              <p class="mb-4">"Expertise made all the difference, absolute pleasure to work with. Exceeded our expectations."</p>
+              <div class="d-flex align-items-center mt-auto">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Stella Smith" class="rounded-circle me-3" width="48" height="48">
+                <div>
+                  <div class="fw-bold">Stella Smith</div>
+                  <div class="text-muted small">Engineer at Unify</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 3 -->
+          <div class="col-md-4">
+            <div class="bg-white rounded-4 shadow-sm p-4 h-100">
+              <div class="mb-3">
+                <span class="fs-2 text-primary">&ldquo;</span>
+              </div>
+              <p class="mb-4">"I highly recommend this agency. Testing for our project was done everything top-notch"</p>
+              <div class="d-flex align-items-center mt-auto">
+                <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Thomas Smith" class="rounded-circle me-3" width="48" height="48">
+                <div>
+                  <div class="fw-bold">Thomas Smith</div>
+                  <div class="text-muted small">Designer at Converta</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trusted By Logos Section -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-center align-items-center gap-5 py-4" style="min-height: 120px;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Trustpilot_logo.png" alt="Trustpilot" height="40" style="opacity: 0.7;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" height="40" style="opacity: 0.7;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" height="40" style="opacity: 0.7;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Logo-monday.svg" alt="Monday" height="40" style="opacity: 0.7;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Forbes_logo.svg" alt="Forbes" height="40" style="opacity: 0.7;">
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-dark-purple py-5 mt-auto">
+      <div class="container">
+        <div class="row">
+          <!-- Logo & Tagline -->
+          <div class="col-md-4">
+            <div class="d-flex align-items-center mb-4">
+              <svg class="me-2" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"></path>
+                <path d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+              <span class="text-white fs-4 fw-bold">Converta</span>
+            </div>
+            <p class="text-muted">Creative-powered to fuel your growth goals. We build world-class digital products, software and branding.</p>
+          </div>
+
+          <!-- Navigation Columns -->
+          <div class="col-md-8">
+            <div class="row">
+              <!-- Products -->
+              <div class="col-md-4">
+                <h5 class="text-white mb-4">Products</h5>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-light">Unify App</a></li>
+                  <li><a href="#" class="text-light">Page Builder</a></li>
+                  <li><a href="#" class="text-light">Templates</a></li>
+                  <li><a href="#" class="text-light">Pricing</a></li>
+                </ul>
+              </div>
+
+              <!-- Resources -->
+              <div class="col-md-4">
+                <h5 class="text-white mb-4">Resources</h5>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-light">Design</a></li>
+                  <li><a href="#" class="text-light">Inspiration</a></li>
+                  <li><a href="#" class="text-light">Blog</a></li>
+                  <li><a href="#" class="text-light">Jobs</a></li>
+                </ul>
+              </div>
+
+              <!-- Support -->
+              <div class="col-md-4">
+                <h5 class="text-white mb-4">Support</h5>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-light">Documentation</a></li>
+                  <li><a href="#" class="text-light">Help Desk</a></li>
+                  <li><a href="#" class="text-light">Video Guides</a></li>
+                  <li><a href="#" class="text-light">Security</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <hr class="border-gray-700 my-5">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="text-center text-muted small"> 2025 Converta Theme. Codeless, LLC. San Francisco, California. USA.</p>
+          </div>
+          <div class="col-md-6 d-flex justify-content-end">
+            <a href="#" class="me-3"><i class="fab fa-facebook-f text-light fs-5"></i></a>
+            <a href="#" class="me-3"><i class="fab fa-twitter text-light fs-5"></i></a>
+            <a href="#" class="me-3"><i class="fab fa-youtube text-light fs-5"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html> 
